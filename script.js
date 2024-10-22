@@ -1,3 +1,24 @@
+// Função para verificar se o nome contém apenas letras
+function validarNome(nome) {
+    const regexNome = /^[A-Za-z\s]+$/; // Aceita apenas letras e espaços
+    return regexNome.test(nome);
+}
+
+// Função para verificar se o e-mail tem um formato válido
+function validarEmail(email) {
+    const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Verifica o formato de e-mail básico
+    return regexEmail.test(email);
+}
+
+// Função para verificar se o telefone contém apenas números
+function validarTelefone(telefone) {
+    const regexTelefone = /^(?:\(\d{2}\)\d{9}|\d{11}|\(\d{2}\)\d{5}-\d{4})$/;
+    return regexTelefone.test(telefone);
+}
+
+
+
+
 // Função para carregar os agendamentos do LocalStorage
 function carregarAgendamentos() {
     const agendamentos = JSON.parse(localStorage.getItem('agendamentos')) || [];
@@ -30,8 +51,27 @@ function agendarServico() {
     const data = document.getElementById('data').value;
     const horario = document.getElementById('horario').value;
 
+    // Verificar se todos os campos obrigatórios estão preenchidos
     if (!nome || !email || !telefone || !data || !horario) {
         alert('Por favor, preencha todos os campos.');
+        return;
+    }
+
+    // Verificar se o nome contém apenas letras
+    if (!validarNome(nome)) {
+        alert('O nome deve conter apenas letras.');
+        return;
+    }
+
+    // Verificar se o e-mail é válido
+    if (!validarEmail(email)) {
+        alert('Por favor, insira um e-mail válido.');
+        return;
+    }
+
+    // Verificar se o telefone contém apenas números
+    if (!validarTelefone(telefone)) {
+        alert('O telefone deve conter apenas números.');
         return;
     }
 

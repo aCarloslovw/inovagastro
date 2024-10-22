@@ -32,6 +32,17 @@ input, select {
     border: 1px solid #ccc;
 }
 
+input[type="tel"] {
+    font-family: monospace; /* Fonte monoespaçada para melhor visualização */
+    letter-spacing: 1px;    /* Espaçamento entre caracteres */
+}
+
+input[type="tel"]:focus {
+    border-color: #4CAF50;  /* Muda a cor da borda ao focar no campo */
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); /* Sombra ao focar */
+}
+
+
 button {
     padding: 10px 15px;
     background-color: #4CAF50;
