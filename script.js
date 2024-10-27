@@ -16,8 +16,32 @@ function validarTelefone(telefone) {
     return regexTelefone.test(telefone);
 }
 
+// Importa a biblioteca EmailJS
 
 
+// Inicializa o EmailJS com seu ID de usuário
+emailjs.init("jF4C2HRsXDuzYS4Pa"); // Substitua "YOUR_USER_ID" pelo seu ID da EmailJS
+
+
+
+// Função para enviar e-mail de confirmação do agendamento
+function enviarEmailAgendamento(agendamento) {
+    emailjs.send("service_dvh1bg4", "template_qw6x8sw", {
+        nome: agendamento.nome,
+        email: agendamento.email,
+        telefone: agendamento.telefone,
+        servico: agendamento.servico,
+        data: agendamento.data,
+        horario: agendamento.horario,
+    }, "jF4C2HRsXDuzYS4Pa")
+    .then(function(response) {
+        console.log("E-mail enviado com sucesso!", response.status, response.text);
+        alert("Agendamento realizado e e-mail de confirmação enviado!");
+    }, function(error) {
+        console.error("Erro ao enviar o e-mail", error);
+        alert("Erro ao enviar e-mail de confirmação.");
+    });
+}
 
 // Função para carregar os agendamentos do LocalStorage
 function carregarAgendamentos() {
@@ -99,6 +123,9 @@ function agendarServico() {
     carregarAgendamentos();
     limparFormulario();
     desabilitarHorarios(data);
+
+    // Chama a função para enviar o e-mail de confirmação
+    enviarEmailAgendamento(agendamento);
 }
 
 // Função para limpar o formulário após o agendamento
