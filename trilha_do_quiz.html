@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trilha de Perguntas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Trilha de Perguntas</h1>
+    <div id="quiz-container">
+        <p id="pergunta-texto"></p>
+        <input type="text" id="resposta" placeholder="Digite sua resposta">
+        <button onclick="verificarResposta()">Enviar Resposta</button>
+        <p id="resultado"></p>
+    </div>
+
+    <script>
+        // Perguntas e respostas para o quiz
+        const perguntas = [
+            { pergunta: "Qual é a capital do Brasil?", resposta: "Brasília" },
+            { pergunta: "Qual é o maior planeta do sistema solar?", resposta: "Júpiter" },
+            { pergunta: "Qual animal é conhecido como 'Rei da Selva'?", resposta: "Leão" },
+            { pergunta: "Qual é o elemento químico representado pela letra 'O'?", resposta: "Oxigênio" },
+            { pergunta: "Quantos continentes existem?", resposta: "7" }
+        ];
+
+        let perguntaAtual = 0;
+        let acertos = 0;
+
+        // Exibe a primeira pergunta
+        function mostrarPergunta() {
+            document.getElementById('pergunta-texto').innerText = perguntas[perguntaAtual].pergunta;
+            document.getElementById('resposta').value = '';
+            document.getElementById('resultado').innerText = '';
+        }
+
+        // Verifica se a resposta está correta
+        function verificarResposta() {
+            const respostaUsuario = document.getElementById('resposta').value.trim();
+
+            if (respostaUsuario.toLowerCase() === perguntas[perguntaAtual].resposta.toLowerCase()) {
+                acertos++;
+                document.getElementById('resultado').innerText = "Resposta correta!";
+            } else {
+                document.getElementById('resultado').innerText = "Resposta incorreta. Tente novamente!";
+            }
+
+            perguntaAtual++;
+
+            if (acertos >= 3) {
+                alert("Você ganhou a banana 3D!");
+                acertos = 0; // Reseta os acertos caso o usuário queira jogar novamente
+                perguntaAtual = 0; // Reseta para a primeira pergunta
+            } else if (perguntaAtual < perguntas.length) {
+                setTimeout(mostrarPergunta, 1000); // Exibe a próxima pergunta
+            } else {
+                alert("Fim das perguntas! Tente novamente para ganhar a banana 3D.");
+                acertos = 0;
+                perguntaAtual = 0;
+            }
+        }
+
+        // Exibe a primeira pergunta ao carregar a página
+        mostrarPergunta();
+    </script>
+</body>
+</html>

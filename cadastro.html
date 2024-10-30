@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendamento de Serviços</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
+
+   
+</head>
+
+
+<body>
+    <h1>Agendamento de Serviços</h1>
+    <div class="form-container">
+        <div class="form-group">
+            <label for="nome">Nome Completo:</label>
+            <input type="text" id="nome" required style="text-transform: uppercase;">
+        </div>
+        <div class="form-group">
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" required>
+        </div>
+             
+        <button onclick="agendarServico()">Agendar</button>
+    </div>
+
+    <h2>Lista de Agendamentos</h2>
+    <table id="tabelaAgendamentos">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>E-mail</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+  emailjs.init("YOUR_USER_ID"); // Substitua "YOUR_USER_ID" pelo seu ID da EmailJS
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
