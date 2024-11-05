@@ -1,5 +1,5 @@
 // Inicializa o EmailJS
-emailjs.init("jF4C2HRsXDuzYS4Pa"); // Substitua "jF4C2HRsXDuzYS4Pa" pelo seu ID da EmailJS
+emailjs.init("3Mh5ts5ZbOQyBvg1Q"); // Substitua "jF4C2HRsXDuzYS4Pa" pelo seu ID da EmailJS
 
 // Função para validar o nome (apenas letras e espaços)
 function validarNome(nome) {
@@ -15,10 +15,10 @@ function validarEmail(email) {
 
 // Função para enviar e-mail de confirmação do agendamento
 function enviarEmailAgendamento(agendamento) {
-    emailjs.send("service_dvh1bg4", "template_hf4ii7r", {
+    emailjs.send("service_y5q9sxl", "template_f7zhrwp", {
         nome: agendamento.nome,
         email: agendamento.email
-    }, "jF4C2HRsXDuzYS4Pa")
+    }, "3Mh5ts5ZbOQyBvg1Q")
     .then(function(response) {
         console.log("E-mail enviado com sucesso!", response.status, response.text);
         alert("Agendamento realizado e e-mail de confirmação enviado!");
