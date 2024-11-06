@@ -15,10 +15,11 @@ function validarEmail(email) {
 
 // Função para enviar e-mail de confirmação do agendamento
 function enviarEmailAgendamento(agendamento) {
-    emailjs.send("service_y5q9sxl", "template_f7zhrwp", {
-        nome: agendamento.nome,
-        email: agendamento.email
-    }, "3Mh5ts5ZbOQyBvg1Q")
+    emailjs.send("service_y5q9sxl","template_f7zhrwp",{
+        from_name: "carlos",
+        name: "carlos",
+        email: "neto2141@hotmail.com",
+        }, "3Mh5ts5ZbOQyBvg1Q")
     .then(function(response) {
         console.log("E-mail enviado com sucesso!", response.status, response.text);
         alert("Agendamento realizado e e-mail de confirmação enviado!");
