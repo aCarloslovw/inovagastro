@@ -17,12 +17,13 @@ function validarEmail(email) {
 function enviarEmailAgendamento(agendamento) {
     emailjs.send("service_y5q9sxl","template_f7zhrwp",{
         from_name: "carlos",
-        name: "carlos",
-        email: "neto2141@hotmail.com",
+        name: agendamento.nome,
+        email: agendamento.email,
         }, "3Mh5ts5ZbOQyBvg1Q")
     .then(function(response) {
         console.log("E-mail enviado com sucesso!", response.status, response.text);
         alert("Agendamento realizado e e-mail de confirmação enviado!");
+        redirecionarPagina("trilha_do_quiz.html");
     }, function(error) {
         console.error("Erro ao enviar o e-mail", error);
         alert("Erro ao enviar e-mail de confirmação.");
@@ -79,7 +80,7 @@ function agendarServico() {
     enviarEmailAgendamento(agendamento);
 
     // Redireciona para outra página após o agendamento (substitua 'pagina-destino.html' pelo caminho desejado)
-    redirecionarPagina("trilha_do_quiz.html");
+    //redirecionarPagina("trilha_do_quiz.html");
 }
 
 // Função para limpar o formulário após o agendamento
